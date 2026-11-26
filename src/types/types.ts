@@ -1,6 +1,3 @@
-export type DB_Item = {
+export type DB_UrlMapping = {
   [kay: string]: string;
-  short_Url: string;
-  id?: string;
 };
-export type DB_Url = DB_Item[];

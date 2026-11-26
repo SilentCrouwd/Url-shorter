@@ -32,16 +32,11 @@ urlRouter.post(
   "/shorten",
   (req: Request<{}, {}, postReqDto>, res: Response) => {
     try {
-      // Erstellen der Liste für die Abfrage der LongURLS
-      const keyName = req.body.name;
-      // LongUrl abrufen
       const long_Url = req.body.long_Url;
-      //Short Url generieren und Zwischenspeichern
       const short_Url = generateRndSting(long_Url, 6);
 
-      createDB_Item(keyName, long_Url, short_Url);
+      createDB_Item(short_Url, long_Url);
 
-      // Status zurückgeben
       res.status(201).json({ short_Url: short_Url });
     } catch (error: unknown) {
       if (error instanceof HtttpException)
